@@ -4,7 +4,7 @@
                 android:orientation="vertical"
                 android:background="#FFFFFF">
 
-    <com.detroitlabs.kyleofori.canvasland.CanvasView
+    <com.detroitlabs.kyleofori.canvasland.GraphicsGoIntoThisView
         android:id="@+id/signature_canvas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

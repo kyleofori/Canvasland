@@ -12,14 +12,14 @@ public class MainActivity extends AppCompatActivity {
     final String CYAN = "Cyan";
     final String MAGENTA = "Magenta";
 
-    private CanvasView customCanvas;
+    private GraphicsGoIntoThisView viewGraphicsGoInto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        customCanvas = (CanvasView) findViewById(R.id.signature_canvas);
+        viewGraphicsGoInto = (GraphicsGoIntoThisView) findViewById(R.id.signature_canvas);
     }
 
     @Override
@@ -44,19 +44,18 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void clearCanvas(View v) {
-        customCanvas.clearCanvas();
+    public void clearCanvas(View v) { //don't think passing in a View is required
+        viewGraphicsGoInto.clearCanvas();
     }
 
     public void changeColor(View v) {
         String colorString = (String) v.getTag();
         switch (colorString) {
             case CYAN:
-                customCanvas.changeColor(Color.CYAN);
+                viewGraphicsGoInto.changeColor(Color.CYAN);
                 break;
             case MAGENTA:
-            default:
-                customCanvas.changeColor(Color.MAGENTA);
+                viewGraphicsGoInto.changeColor(Color.MAGENTA);
                 break;
         }
     }
