@@ -20,11 +20,10 @@ import java.util.Map;
  */
 public class GraphicsGoIntoThisView extends View {
 
+    Context context;
     private Bitmap bitmap; //drawing area for display
     private Path path; //used to draw lines onto bitmap
     private List<Path> paths = new ArrayList<>();
-    private List<Path> undonePaths = new ArrayList<>();
-    Context context;
     private Paint paint;
     private Map<Path, Integer> colorsMap = new HashMap<>();
     private int defaultColor = Color.GREEN;
@@ -48,6 +47,7 @@ public class GraphicsGoIntoThisView extends View {
         paint.setStrokeJoin(Paint.Join.MITER);
         paint.setStrokeWidth(8f);
 
+        // Then, we match this path and the color together in a map.
         colorsMap.put(path, defaultColor);
     }
 
@@ -63,12 +63,18 @@ public class GraphicsGoIntoThisView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        // draw the path with the paint on the canvas when onDraw
+//        The following for loop takes care of all the old (previously-drawn) lines.
         for(Path p: paths) {
+//            The following line alone is responsible for keeping the colors of all previously-drawn lines the same.
+//            I think in my first attempt at this, I had one path consisting of multiple lines on the canvas.
+//            Then, when I started using multiple paths but hadn't added the line below, the issue was the same:
+//            individual paths were not matched to the colors they were originally drawn in,
+//            so they were getting redrawn every time in the new color.
             paint.setColor(colorsMap.get(p));
             canvas.drawPath(p, paint);
         }
         paint.setColor(selectedColor);
+        // draw the path with the paint on the canvas when onDraw
         canvas.drawPath(path, paint);
     }
 
@@ -78,6 +84,7 @@ public class GraphicsGoIntoThisView extends View {
         float x = event.getX();
         float y = event.getY();
 
+//        Depending on how you touch, the following code will be executed.
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 startTouch(x, y);
@@ -128,8 +135,11 @@ public class GraphicsGoIntoThisView extends View {
     // when ACTION_UP stop touch
     private void upTouch() {
         path.lineTo(xX, yY);
+//        Adds this path to the list of paths.
         paths.add(path);
+//        Associates the color used with the path just drawn
         colorsMap.put(path, selectedColor);
+//        Makes a whole new path for the next one. This was not in the very first iteration.
         path = new Path();
     }
 
