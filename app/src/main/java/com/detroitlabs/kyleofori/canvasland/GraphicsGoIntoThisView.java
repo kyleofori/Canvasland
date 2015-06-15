@@ -68,7 +68,7 @@ public class GraphicsGoIntoThisView extends View {
             paint.setColor(colorsMap.get(p));
             canvas.drawPath(p, paint);
         }
-//        paint.setColor(selectedColor);
+        paint.setColor(selectedColor);
         canvas.drawPath(path, paint);
     }
 
@@ -114,7 +114,8 @@ public class GraphicsGoIntoThisView extends View {
     }
 
     public void clearCanvas() {
-        path.reset();
+//        path.reset() was needed when I only had one path, but now I am working with a list that I can just clear.
+        paths.clear();
         invalidate();
     }
 
