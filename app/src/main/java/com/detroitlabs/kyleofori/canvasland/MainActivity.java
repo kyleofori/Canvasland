@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeColor(View v) {
-        String colorString = (String) v.getTag();
-        viewGraphicsGoInto.changeColor(colorString);
+        String colorTag = (String) v.getTag();
+        viewGraphicsGoInto.changeColor(colorTag);
     }
 }

@@ -36,6 +36,54 @@
             android:background="@color/cyan"
             android:onClick="changeColor"
             android:tag="@string/cyan"/>
+
+        <Button
+            android:id="@+id/btn_red"
+            android:layout_width="@dimen/square_button_side_length"
+            android:layout_height="@dimen/square_button_side_length"
+            android:background="@color/red"
+            android:onClick="changeColor"
+            android:tag="@string/red"/>
+
+        <Button
+            android:id="@+id/btn_yellow"
+            android:layout_width="@dimen/square_button_side_length"
+            android:layout_height="@dimen/square_button_side_length"
+            android:background="@color/yellow"
+            android:onClick="changeColor"
+            android:tag="@string/yellow"/>
+
+        <Button
+            android:id="@+id/btn_gray"
+            android:layout_width="@dimen/square_button_side_length"
+            android:layout_height="@dimen/square_button_side_length"
+            android:background="@color/gray"
+            android:onClick="changeColor"
+            android:tag="@string/gray"/>
+
+        <Button
+            android:id="@+id/btn_green"
+            android:layout_width="@dimen/square_button_side_length"
+            android:layout_height="@dimen/square_button_side_length"
+            android:background="@color/green"
+            android:onClick="changeColor"
+            android:tag="@string/green"/>
+
+        <Button
+            android:id="@+id/btn_black"
+            android:layout_width="@dimen/square_button_side_length"
+            android:layout_height="@dimen/square_button_side_length"
+            android:background="@color/black"
+            android:onClick="changeColor"
+            android:tag="@string/black"/>
+
+        <Button
+            android:id="@+id/btn_messedup"
+            android:layout_width="@dimen/square_button_side_length"
+            android:layout_height="@dimen/square_button_side_length"
+            android:background="@color/blue"
+            android:onClick="changeColor"
+            android:tag="Blue"/>
     </LinearLayout>
 
 </FrameLayout>

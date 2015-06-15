@@ -20,8 +20,28 @@ import java.util.Map;
  */
 public class GraphicsGoIntoThisView extends View {
 
+    private enum PaintColor {
+        CYAN ("Cyan", R.color.cyan),
+        MAGENTA ("Magenta", R.color.magenta),
+        GREEN ("Green", R.color.green),
+        BLACK ("Black", R.color.black),
+        RED ("Red", R.color.red),
+        ORANGE ("Orange", R.color.orange),
+        YELLOW ("Yellow", R.color.yellow),
+        GRAY ("Gray", R.color.gray);
 
-    final String CYAN = "Cyan";
+        private final String colorName;
+        private final int aColor;
+
+        PaintColor(String colorName, int aColor) {
+            this.colorName = colorName;
+            this.aColor = aColor;
+        }
+
+        private String colorName() {return colorName;}
+        private int aColor() {return aColor;}
+    }
+
     final String MAGENTA = "Magenta";
 
     Context context;
@@ -130,15 +150,36 @@ public class GraphicsGoIntoThisView extends View {
         invalidate();
     }
 
-    public void changeColor(String colorString) {
+    public void changeColor(String colorTag) {
 //        path = new Path();
-        int color = defaultColor;
-        switch (colorString) {
-            case CYAN:
-                color = getResources().getColor(R.color.cyan);
+        int color;
+        switch (colorTag) {
+            case "Cyan":
+                color = Color.CYAN;
                 break;
-            case MAGENTA:
-                color = getResources().getColor(R.color.magenta);
+            case "Magenta":
+                color = Color.MAGENTA;
+                break;
+            case "Red":
+                color = Color.RED;
+                break;
+            case "Yellow":
+                color = Color.YELLOW;
+                break;
+            case "Gray":
+                color = Color.GRAY;
+                break;
+            case "Green":
+                color = Color.GREEN;
+                break;
+            case "Black":
+                color = Color.BLACK;
+                break;
+            case "Blue":
+                color = Color.BLUE;
+                break;
+            default:
+                color = defaultColor;
                 break;
         }
         paint.setColor(color);
