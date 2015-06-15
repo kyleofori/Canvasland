@@ -1,6 +1,5 @@
 package com.detroitlabs.kyleofori.canvasland;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -8,9 +7,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
-
-    final String CYAN = "Cyan";
-    final String MAGENTA = "Magenta";
 
     private GraphicsGoIntoThisView viewGraphicsGoInto;
 
@@ -50,13 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void changeColor(View v) {
         String colorString = (String) v.getTag();
-        switch (colorString) {
-            case CYAN:
-                viewGraphicsGoInto.changeColor(Color.CYAN);
-                break;
-            case MAGENTA:
-                viewGraphicsGoInto.changeColor(Color.MAGENTA);
-                break;
-        }
+        viewGraphicsGoInto.changeColor(colorString);
     }
 }

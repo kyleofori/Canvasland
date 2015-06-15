@@ -5,4 +5,9 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="SquareBtnStyle" parent="android:Widget.Holo.TextView">
+        <item name="android:layout_width">@dimen/square_button_side_length</item>
+        <item name="android:layout_height">@dimen/square_button_side_length</item>
+    </style>
+
 </resources>

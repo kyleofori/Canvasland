@@ -20,6 +20,10 @@ import java.util.Map;
  */
 public class GraphicsGoIntoThisView extends View {
 
+
+    final String CYAN = "Cyan";
+    final String MAGENTA = "Magenta";
+
     Context context;
     private Bitmap bitmap; //drawing area for display
     private Path path; //used to draw lines onto bitmap
@@ -126,8 +130,17 @@ public class GraphicsGoIntoThisView extends View {
         invalidate();
     }
 
-    public void changeColor(int color) {
+    public void changeColor(String colorString) {
 //        path = new Path();
+        int color = defaultColor;
+        switch (colorString) {
+            case CYAN:
+                color = getResources().getColor(R.color.cyan);
+                break;
+            case MAGENTA:
+                color = getResources().getColor(R.color.magenta);
+                break;
+        }
         paint.setColor(color);
         selectedColor = color;
     }
